@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="145.0" prefWidth="364.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
+   <children>
+      <Label fx:id="winnerLabel" alignment="CENTER" layoutX="67.0" layoutY="36.0" prefHeight="19.0" prefWidth="231.0" text="">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Label>
+      <Pane layoutX="78.0" layoutY="62.0" prefHeight="41.0" prefWidth="209.0">
+         <children>
+            <Button fx:id="acknowledgeWinnerButton" layoutX="75.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedAcknowledgeWinner" prefHeight="25.0" prefWidth="144.0" style="-fx-pref-width: 60; -fx-background-color: #9ed016; -fx-background-radius: 10;" text="OK">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor></Button>
+         </children>
+      </Pane>
+   </children>
+</Pane>

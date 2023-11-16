@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="145.0" prefWidth="364.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
+   <children>
+      <Label layoutX="107.0" layoutY="28.0" text="Insert game name here">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Label>
+      <TextField fx:id="loadGameTextField" layoutX="108.0" layoutY="60.0" />
+      <Pane layoutX="78.0" layoutY="91.0" prefHeight="41.0" prefWidth="209.0">
+         <children>
+            <Button fx:id="loadGameButton" layoutX="40.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedConfirmLoad" style="-fx-pref-width: 60; -fx-background-color: #9ed016; -fx-background-radius: 10;" text="Load">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="cancelLoadGameButton" layoutX="110.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedCancelLoad" prefHeight="25.0" prefWidth="144.0" style="-fx-pref-width: 60; -fx-background-color: #9ed016; -fx-background-radius: 10;" text="Cancel">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor></Button>
+         </children>
+      </Pane>
+   </children>
+</Pane>

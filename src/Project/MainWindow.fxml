@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="426.0" prefWidth="600.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
+   <children>
+      <Pane id="mainMenuPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="267.0" prefWidth="467.0" style="-fx-background-color: Black;">
+         <children>
+            <Button fx:id="startNewGameButton" layoutX="75.0" layoutY="87.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedStart" prefWidth="159.0" style="-fx-background-radius: 30; -fx-background-color: #9ed016; -fx-pref-width: 150; -fx-pref-height: 60;" text="New Game">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+             <Button fx:id="loadGamePopupButton" layoutX="75.0" layoutY="174.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedLoad" prefWidth="159.0" style="-fx-background-radius: 30; -fx-background-color: #9ed016; -fx-pref-width: 150; -fx-pref-height: 60;" text="Load Game">
+                 <font>
+                     <Font name="System Bold Italic" size="18.0" />
+                 </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Pane layoutX="264.0" layoutY="71.0" prefHeight="175.0" prefWidth="176.0">
+               <children>
+                  <Label layoutX="55.0" layoutY="14.0" prefWidth="62.0" text="Difficulty:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                   <Label layoutX="55.0" layoutY="94.0" prefHeight="17.0" prefWidth="74.0" text="First Player:" textFill="WHITE">
+                       <font>
+                           <Font name="System Bold Italic" size="12.0" />
+                       </font>
+                  </Label>
+                  <RadioButton fx:id="easy" layoutX="26.0" layoutY="40.0" mnemonicParsing="false" text="Easy" textFill="WHITE">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="Difficulty" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="normal" layoutX="26.0" layoutY="65.0" mnemonicParsing="false" text="Normal" textFill="WHITE" toggleGroup="$Difficulty" />
+                  <RadioButton fx:id="user" layoutX="26.0" layoutY="120.0" mnemonicParsing="false" text="User" textFill="WHITE">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="FirstPlayer" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="computer" layoutX="26.0" layoutY="145.0" mnemonicParsing="false" text="Computer" textFill="WHITE" toggleGroup="$FirstPlayer" />
+               </children>
+            </Pane>
+            <Label layoutX="128.0" layoutY="26.0" text="HEX BOARD GAME" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</StackPane>

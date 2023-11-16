@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="426.0" prefWidth="600.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
+   <children>
+      <Pane id="gamePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="426.0" prefWidth="600.0" style="-fx-background-color: Black;">
+          <children>
+              <Label fx:id="gameDisplayTitle" layoutX="54.0" layoutY="33.0" text="HEX BOARD GAME" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+            </Label>
+              <Polygon fx:id="P00" fill="#fff8f8" layoutX="115.0" layoutY="112.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P04" fill="#fff8f8" layoutX="359.0" layoutY="112.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P03" fill="#fff8f8" layoutX="298.0" layoutY="112.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P02" fill="#fff8f8" layoutX="237.0" layoutY="112.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P01" fill="#fff8f8" layoutX="176.0" layoutY="112.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P10" fill="#fff8f8" layoutX="146.0" layoutY="165.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P11" fill="#fff8f8" layoutX="207.0" layoutY="165.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P12" fill="#fff8f8" layoutX="268.0" layoutY="165.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P13" fill="#fff8f8" layoutX="329.0" layoutY="165.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P14" fill="#fff8f8" layoutX="390.0" layoutY="165.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P20" fill="#fff8f8" layoutX="177.0" layoutY="218.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P21" fill="#fff8f8" layoutX="238.0" layoutY="218.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P22" fill="#fff8f8" layoutX="299.0" layoutY="218.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P23" fill="#fff8f8" layoutX="360.0" layoutY="218.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P24" fill="#fff8f8" layoutX="421.0" layoutY="218.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P30" fill="#fff8f8" layoutX="208.0" layoutY="271.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P31" fill="#fff8f8" layoutX="269.0" layoutY="271.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P32" fill="#fff8f8" layoutX="330.0" layoutY="271.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P33" fill="#fff8f8" layoutX="391.0" layoutY="271.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P34" fill="#fff8f8" layoutX="452.0" layoutY="271.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P40" fill="#fff8f8" layoutX="239.0" layoutY="324.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P41" fill="#fff8f8" layoutX="300.0" layoutY="324.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P42" fill="#fff8f8" layoutX="361.0" layoutY="324.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P43" fill="#fff8f8" layoutX="422.0" layoutY="324.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fx:id="P44" fill="#fff8f8" layoutX="483.0" layoutY="324.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Polygon>
+              <Polygon fill="#0037ff" layoutX="75.0" layoutY="91.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="150.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#0037ff" layoutX="137.0" layoutY="91.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="150.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#0037ff" layoutX="198.0" layoutY="91.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="150.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#0037ff" layoutX="259.0" layoutY="91.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="150.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#0037ff" layoutX="320.0" layoutY="91.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="150.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#0037ff" layoutX="261.0" layoutY="375.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="330.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#0037ff" layoutX="322.0" layoutY="375.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="330.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#0037ff" layoutX="383.0" layoutY="375.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="330.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#0037ff" layoutX="444.0" layoutY="375.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="330.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#0037ff" layoutX="505.0" layoutY="375.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="330.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#ff0400" layoutX="60.0" layoutY="118.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#ff0400" layoutX="91.0" layoutY="172.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#ff0400" layoutX="122.0" layoutY="225.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#ff0400" layoutX="152.0" layoutY="277.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#ff0400" layoutX="183.0" layoutY="331.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#ff0400" layoutX="397.0" layoutY="135.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="210.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#ff0400" layoutX="428.0" layoutY="188.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="210.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#ff0400" layoutX="459.0" layoutY="240.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="210.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#ff0400" layoutX="490.0" layoutY="293.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="210.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#ff0400" layoutX="522.0" layoutY="348.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="210.0" stroke="BLACK" strokeType="INSIDE" />
+              <Button fx:id="saveGamePopupButton" layoutX="424.0" layoutY="375.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedSave" style="-fx-background-radius: 10; -fx-background-color: #9ed016; -fx-pref-width: 60;" text="Save">
+                  <font>
+                      <Font name="System Bold Italic" size="12.0" />
+                  </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+              </Button>
+              <Button fx:id="returnToMainDisplayButton" layoutX="490.0" layoutY="375.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedReturn" style="-fx-background-radius: 10; -fx-background-color: #9ed016; -fx-pref-width: 60;" text="Return">
+                  <font>
+                      <Font name="System Bold Italic" size="12.0" />
+                  </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+              </Button>
+              <Button fx:id="undoLastMoveButton" layoutX="358.0" layoutY="375.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedUndo" style="-fx-background-radius: 10; -fx-background-color: #9ed016; -fx-pref-width: 60;" text="Undo">
+                  <font>
+                      <Font name="System Bold Italic" size="12.0" />
+                  </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+              </Button>
+          </children>
+      </Pane>
+   </children>
+</StackPane>
