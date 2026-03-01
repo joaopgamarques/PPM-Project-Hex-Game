@@ -2,7 +2,7 @@
 
 A functional implementation of the [Hex board game](https://en.wikipedia.org/wiki/Hex_(board_game)) in Scala 3, featuring both a text-based (TUI) and graphical (GUI) interface.
 
-Developed for the Multiparadigm Programming (PPM) course at ISEL.
+Developed for the Multiparadigm Programming (PPM) course at ISCTE.
 
 ## About the Game
 
