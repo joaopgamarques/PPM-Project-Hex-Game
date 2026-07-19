@@ -5,7 +5,6 @@ import Project.Cells.Cell
 import Project.Difficulty.{Easy, Normal}
 import Project.FirstPlayer.{Computer, User}
 import scala.io.StdIn.readLine
-import scala.io.StdIn.readInt
 import scala.Console
 import scala.annotation.{nowarn, tailrec}
 import scala.util.matching.Regex
@@ -34,12 +33,18 @@ object HexUtils {
 
   private def getUserInput(message: String): Try[Int] = {
     print(message + ": ")
-    Try(readLine.trim.toUpperCase.toInt)
+    Try(readLineOrExit().trim.toUpperCase.toInt)
   }
 
   private def prompt(message: String): String = {
     print(message + ": ")
     readLine()
+  }
+
+  // Read a line from the standard input, terminating cleanly when the input stream has been closed (EOF).
+  private def readLineOrExit(): String = readLine() match {
+    case null => println("\nEnd of input reached. Exiting the game."); sys.exit(0)
+    case line => line
   }
 
   // T3: Representar, visualmente, as jogadas no tabuleiro.
@@ -104,7 +109,7 @@ object HexUtils {
   @tailrec
   def getBoardSize: Int = {
     showGetBoardSizePrompt()
-    val size: Try[Int] = Try(readInt())
+    val size: Try[Int] = Try(readLineOrExit().trim.toInt)
     size match
       case Success(value) => if(value >= 3 && value <= 21) then value else getBoardSize
       case Failure(exception) => getBoardSize
@@ -116,7 +121,7 @@ object HexUtils {
   @tailrec
   def getGameDifficulty: Difficulty = {
     showGetGameDifficultyPrompt()
-    val difficulty: Try[Int] = Try(readInt())
+    val difficulty: Try[Int] = Try(readLineOrExit().trim.toInt)
     difficulty match
       case Success(value) => value match {
         case 1 => Difficulty.Easy
@@ -132,7 +137,7 @@ object HexUtils {
   @tailrec
   def getFirstPlayer: FirstPlayer = {
     showGetFirstPlayerPrompt()
-    val firstPlayer: Try[Int] = Try(readInt())
+    val firstPlayer: Try[Int] = Try(readLineOrExit().trim.toInt)
     firstPlayer match
       case Success(value) => value match {
         case 1 => FirstPlayer.User
@@ -149,7 +154,7 @@ object HexUtils {
   def getUserNextMove: String = {
     showUserNextMovePrompt()
     val pattern: Regex = "^\\d{1,2},\\d{1,2}$".r
-    val move: String = readLine().trim().toUpperCase()
+    val move: String = readLineOrExit().trim().toUpperCase()
     pattern.findFirstMatchIn(move) match
       case Some(_) => move
       case None => getUserNextMove
