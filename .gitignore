@@ -1,0 +1,10 @@
+# Generated at runtime: game saves and RNG state
+*.bin
+
+# Build output
+out/
+
+# IntelliJ volatile files (shared project config under .idea/ stays tracked)
+.idea/workspace.xml
+.idea/usage.statistics.xml
+.idea/shelf/
