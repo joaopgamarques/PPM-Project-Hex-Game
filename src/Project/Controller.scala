@@ -21,6 +21,9 @@ import scala.annotation.{nowarn, tailrec}
 
 class Controller {
 
+  // The GUI board is a fixed 5x5 grid of Polygon cells (see GameWindow.fxml).
+  private val BOARD_SIZE: Int = 5
+
   @FXML
   private var P00, P01, P02, P03, P04: Polygon = _
   @FXML
@@ -186,15 +189,21 @@ class Controller {
 
   // Load a previous saved game.
   def onMouseClickedConfirmLoad(): Unit = {
-    val stage: Stage = loadGameButton.getScene.getWindow.asInstanceOf[Stage].getOwner.asInstanceOf[Stage]
-    val fxmlLoader = new FXMLLoader(getClass.getResource("GameWindow.fxml"))
-    val mainViewRoot: Parent = fxmlLoader.load()
-    val scene: Scene = new Scene(mainViewRoot)
-    stage.setScene(scene); stage.show()
-    loadGameButton.getScene.getWindow.hide()
-    FxApp.container = HexUtils.load(loadGameTextField.getText).get
-    fillPositions(FxApp.container.state.getOccupiedBy(Cells.Red), Color.RED, scene)
-    fillPositions(FxApp.container.state.getOccupiedBy(Cells.Blue), Color.BLUE, scene)
+    HexUtils.load(loadGameTextField.getText) match {
+      // Only accept files that exist and match the fixed 5x5 GUI board; force the GUI user interface on the loaded settings.
+      case Some(value) if value.state.board.size.equals(BOARD_SIZE) =>
+        val stage: Stage = loadGameButton.getScene.getWindow.asInstanceOf[Stage].getOwner.asInstanceOf[Stage]
+        val fxmlLoader = new FXMLLoader(getClass.getResource("GameWindow.fxml"))
+        val mainViewRoot: Parent = fxmlLoader.load()
+        val scene: Scene = new Scene(mainViewRoot)
+        stage.setScene(scene); stage.show()
+        loadGameButton.getScene.getWindow.hide()
+        FxApp.container = Container(value.state, value.positions, value.random, (value.settings._1, value.settings._2, UserInterface.GUI))
+        fillPositions(FxApp.container.state.getOccupiedBy(Cells.Red), Color.RED, scene)
+        fillPositions(FxApp.container.state.getOccupiedBy(Cells.Blue), Color.BLUE, scene)
+      // Keep the popup open on failure so the user can correct the filename or cancel.
+      case _ => ()
+    }
   }
 
   // Draw the board by filling the corresponding Polygon elements with the specified color.

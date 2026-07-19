@@ -9,8 +9,9 @@ import scala.io.StdIn.readInt
 import scala.Console
 import scala.annotation.{nowarn, tailrec}
 import scala.util.matching.Regex
-import java.io.{FileInputStream, FileOutputStream, IOException, ObjectInputStream, ObjectOutputStream}
+import java.io.{FileInputStream, FileOutputStream, ObjectInputStream, ObjectOutputStream}
 import scala.collection.SortedMap
+import scala.util.control.NonFatal
 import scala.util.{Failure, Success, Try}
 
 // Implement all user interface functions (impure).
@@ -174,7 +175,7 @@ object HexUtils {
       objectOut = Some(new ObjectOutputStream(fileOut.get))
       objectOut.get.writeObject(container)
     } catch {
-      case exception: IOException => println(Console.RED + "An error occurred while saving the file." + Console.RESET)
+      case NonFatal(exception) => println(Console.RED + "An error occurred while saving the file." + Console.RESET)
     } finally {
       if(objectOut.isDefined) then objectOut.get.close()
       if(fileOut.isDefined) then fileOut.get.close()
@@ -193,7 +194,7 @@ object HexUtils {
       objectIn = Some(new ObjectInputStream(fileIn.get))
       container = Some(objectIn.get.readObject().asInstanceOf[Container])
     } catch {
-      case exception: IOException => println(Console.RED + "An error occurred while loading the file." + Console.RESET)
+      case NonFatal(exception) => println(Console.RED + "An error occurred while loading the file." + Console.RESET)
     } finally {
       if(objectIn.isDefined) then objectIn.get.close()
       if(fileIn.isDefined) then fileIn.get.close()
@@ -210,7 +211,7 @@ object HexUtils {
       objectOut = Some(new ObjectOutputStream(fileOut.get))
       objectOut.get.writeObject(random)
     } catch {
-      case exception: IOException => println(Console.RED + "An error occurred while saving the file." + Console.RESET)
+      case NonFatal(exception) => println(Console.RED + "An error occurred while saving the file." + Console.RESET)
     } finally {
       if (objectOut.isDefined) then objectOut.get.close()
       if (fileOut.isDefined) then fileOut.get.close()
@@ -227,7 +228,7 @@ object HexUtils {
       objectIn = Some(new ObjectInputStream(fileIn.get))
       random = Some(objectIn.get.readObject().asInstanceOf[MyRandom])
     } catch {
-      case exception: IOException => saveMyRandom(Container.create().random)
+      case NonFatal(exception) => saveMyRandom(Container.create().random)
     } finally {
       if (objectIn.isDefined) then objectIn.get.close()
       if (fileIn.isDefined) then fileIn.get.close()
