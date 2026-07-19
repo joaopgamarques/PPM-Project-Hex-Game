@@ -73,7 +73,7 @@ object GameState {
   private def randomMove(board: Board, random: MyRandom): ((Int, Int), MyRandom) = {
     // Get a flattened list of cells with their positions and filter out the cells that are empty.
     val listOfEmptyCells: List[(Cells.Cell, (Int, Int))] = getFlattenedListOfCells(board).filter(cell => cell._1.equals(Cells.Empty))
-    val (index, nextRandom): (Int, MyRandom) = random.nextInt(listOfEmptyCells.size - 1)
+    val (index, nextRandom): (Int, MyRandom) = random.nextInt(listOfEmptyCells.size)
     // Determine the position based on the selected index from the list of empty cells.
     val position: (Int, Int) = listOfEmptyCells.apply(index)._2
     (position, nextRandom)
@@ -88,9 +88,9 @@ object GameState {
     val listOfAdjacentEmptyCells: List[(Cells.Cell, (Int, Int))] =
       listOfEmptyCells.filter(cell => getNeighbors(board, cell._2._1, cell._2._2).exists(neighbor => getPiece(board, neighbor._1, neighbor._2).equals(Cells.Red)))
     val (index, nextRandom): (Int, MyRandom) = listOfAdjacentEmptyCells match
-      case Nil => random.nextInt(listOfEmptyCells.size - 1)
+      case Nil => random.nextInt(listOfEmptyCells.size)
       case List(value) => (0, random)
-      case head :: tail => random.nextInt(listOfAdjacentEmptyCells.size - 1)
+      case head :: tail => random.nextInt(listOfAdjacentEmptyCells.size)
     // Determine the position based on the index and the list of adjacent empty cells.
     val position: (Int, Int) = listOfAdjacentEmptyCells match
       case Nil => listOfEmptyCells.apply(index)._2

@@ -148,7 +148,7 @@ object HexUtils {
   @tailrec
   def getUserNextMove: String = {
     showUserNextMovePrompt()
-    val pattern: Regex = "[0-9],[0-9]".r
+    val pattern: Regex = "^\\d+,\\d+$".r
     val move: String = readLine().trim().toUpperCase()
     pattern.findFirstMatchIn(move) match
       case Some(_) => move
