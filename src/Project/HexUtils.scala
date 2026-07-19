@@ -10,6 +10,7 @@ import scala.annotation.{nowarn, tailrec}
 import scala.util.matching.Regex
 import java.io.{FileInputStream, FileOutputStream, IOException, ObjectInputStream, ObjectOutputStream}
 import scala.collection.SortedMap
+import scala.util.control.NonFatal
 import scala.util.{Failure, Success, Try}
 
 // Implement all user interface functions (impure).
@@ -210,7 +211,8 @@ object HexUtils {
       objectIn = Some(new ObjectInputStream(fileIn.get))
       container = Some(objectIn.get.readObject().asInstanceOf[Container])
     } catch {
-      case exception: IOException => println(Console.RED + "An error occurred while loading the file." + Console.RESET)
+      // NonFatal also covers corrupt or incompatible files (e.g. ClassNotFoundException, ClassCastException).
+      case NonFatal(exception) => println(Console.RED + "An error occurred while loading the file." + Console.RESET)
     } finally {
       if(objectIn.isDefined) then objectIn.get.close()
       if(fileIn.isDefined) then fileIn.get.close()
@@ -244,7 +246,8 @@ object HexUtils {
       objectIn = Some(new ObjectInputStream(fileIn.get))
       random = Some(objectIn.get.readObject().asInstanceOf[MyRandom])
     } catch {
-      case exception: IOException => saveMyRandom(Container.create().random)
+      // NonFatal also covers a corrupt file, which is reset to a fresh default the same way as a missing one.
+      case NonFatal(exception) => saveMyRandom(Container.create().random)
     } finally {
       if (objectIn.isDefined) then objectIn.get.close()
       if (fileIn.isDefined) then fileIn.get.close()
