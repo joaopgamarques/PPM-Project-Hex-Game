@@ -94,7 +94,7 @@ object Container {
       case List(value) =>
         container.settings._2 match
           case FirstPlayer.User =>
-            val lastContainer: Container = Container.create(container.state.board.size)
+            val lastContainer: Container = Container.create(container.state.board.size, container.random.seed, container.settings)
             HexUtils.printContainer(lastContainer); lastContainer
           case FirstPlayer.Computer => HexUtils.printContainer(container); container
       case head :: tail =>
