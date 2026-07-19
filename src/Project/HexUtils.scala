@@ -171,7 +171,12 @@ object HexUtils {
   def showGameOverMessage(): Unit = println(Console.RED + "The game is already over!" + Console.RESET)
 
   // Save the game to a binary file.
-  def showSaveGamePrompt(): String = readLine("Please enter the name of the file to save the game to: ")
+  @tailrec
+  def showSaveGamePrompt(): String = {
+    print("Please enter the name of the file to save the game to: ")
+    val filename: String = readLineOrExit().trim
+    if (filename.nonEmpty) then filename else showSaveGamePrompt()
+  }
 
   def save(container: Container, filename: String): Unit = {
     var fileOut: Option[FileOutputStream] = None
@@ -189,7 +194,12 @@ object HexUtils {
   }
 
   // Load a game from a binary file.
-  def showLoadGamePrompt(): String = readLine("Please enter the name of the file to load the game from: ")
+  @tailrec
+  def showLoadGamePrompt(): String = {
+    print("Please enter the name of the file to load the game from: ")
+    val filename: String = readLineOrExit().trim
+    if (filename.nonEmpty) then filename else showLoadGamePrompt()
+  }
 
   def load(filename: String): Option[Container] = {
     var fileIn: Option[FileInputStream] = None
