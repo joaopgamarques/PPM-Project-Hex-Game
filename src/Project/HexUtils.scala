@@ -148,7 +148,7 @@ object HexUtils {
   @tailrec
   def getUserNextMove: String = {
     showUserNextMovePrompt()
-    val pattern: Regex = "^\\d+,\\d+$".r
+    val pattern: Regex = "^\\d{1,2},\\d{1,2}$".r
     val move: String = readLine().trim().toUpperCase()
     pattern.findFirstMatchIn(move) match
       case Some(_) => move
@@ -162,6 +162,8 @@ object HexUtils {
   def showUserWinsMessage(): Unit = println(Console.BLUE + "The user wins the game!" + Console.RESET)
 
   def showComputerWinsMessage(): Unit = println(Console.RED + "The computer wins the game!" + Console.RESET)
+
+  def showGameOverMessage(): Unit = println(Console.RED + "The game is already over!" + Console.RESET)
 
   // Save the game to a binary file.
   def showSaveGamePrompt(): String = readLine("Please enter the name of the file to save the game to: ")

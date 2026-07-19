@@ -45,7 +45,8 @@ object Container {
   // Prompt the user to enter his/her next move and the computer will respond accordingly.
   def play(move: => String)(container: Container): Container = {
     val (difficulty, firstPlayer, userInterface): Settings = container.settings
-    if(container.state.hasWinner) then return container
+    if(container.state.hasWinner) then
+      HexUtils.showGameOverMessage(); return container
 
     if(container.state.isBoardFull) then
       HexUtils.showHexBoardWarning(); return container
@@ -112,13 +113,16 @@ object Container {
   // Load a previous saved container.
   def load(filename: => String)(container: Container): Container = {
     HexUtils.load(filename) match
-      case Some(value) => HexUtils.printContainer(value); value
+      // Keep the loaded game but preserve the current user interface (the save may come from the other interface).
+      case Some(value) =>
+        val loadedContainer: Container = Container(value.state, value.positions, value.random, (value.settings._1, value.settings._2, container.settings._3))
+        HexUtils.printContainer(loadedContainer); loadedContainer
       case None => container
   }
 
   // Save the current container.
   def save(filename: => String)(container: Container): Container = {
-    HexUtils.save(container, HexUtils.showSaveGamePrompt()); container
+    HexUtils.save(container, filename); container
   }
 
   // Return to the main menu.

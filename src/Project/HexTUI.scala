@@ -22,7 +22,11 @@ object HexTUI extends App {
       case MainMenu =>
         HexUtils.userOptionsPrompt(Options.mainMenu) match {
           case Some(option) => option.name match {
-            case "Start" | "Load" | "Resume" => val nextContainer = option.execute(container); mainLoop(nextContainer, GameOptions.GameMenu)
+            case "Start" | "Resume" => val nextContainer = option.execute(container); mainLoop(nextContainer, GameOptions.GameMenu)
+            case "Load" =>
+              // Stay in the main menu if loading failed (execute returns the same container instance on failure).
+              val nextContainer = option.execute(container)
+              if (nextContainer eq container) then mainLoop(container, GameOptions.MainMenu) else mainLoop(nextContainer, GameOptions.GameMenu)
             case "Settings" => val nextContainer = option.execute(container); mainLoop(nextContainer, GameOptions.Settings)
             case "Exit" => HexUtils.saveMyRandom(container.random); val nextContainer = option.execute(container); mainLoop(nextContainer, GameOptions.MainMenu)
           }
