@@ -1,14 +1,11 @@
 package Project
 
-import Project.Board
-import Project.Cells.Cell
 import Project.Options
 import Project.GameOptions.{MainMenu, GameMenu, Settings}
-import Project.Difficulty.{Normal, Easy}
-import Project.FirstPlayer.{User, Computer}
-import Project.UserInterface.{TUI, GUI}
+import Project.Difficulty.Normal
+import Project.FirstPlayer.User
+import Project.UserInterface.TUI
 import scala.annotation.tailrec
-import scala.collection.SortedMap
 
 object HexTUI extends App {
 

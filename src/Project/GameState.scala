@@ -2,8 +2,6 @@ package Project
 
 import Project.Board
 import Project.Cells.Cell
-import scala.Console
-import scala.annotation.tailrec
 
 // Implement all instance methods.
 case class GameState(board: Board, move: Option[(Int, Int)]) {
@@ -12,7 +10,6 @@ case class GameState(board: Board, move: Option[(Int, Int)]) {
   def play(player: Cells.Cell, row:Int, column:Int): Board = GameState.play(this.board, player, row, column)
   def remove(positions: List[(Int, Int)]): Board = GameState.remove(this.board, positions)
   def isEmpty(row: Int, column: Int): Boolean = GameState.isEmpty(this.board, row, column)
-  def isOccupied(row: Int, column: Int): Boolean = GameState.isOccupied(this.board, row, column)
   def isBoardEmpty: Boolean = GameState.isBoardEmpty(this.board)
   def isBoardFull: Boolean = GameState.isBoardFull(this.board)
   def getNumberOfPieces: Int = GameState.getNumberOfPieces(this.board)
@@ -32,14 +29,8 @@ object GameState {
   private def exists(board: Board, row: Int, column: Int): Boolean = row >= 0 && row < board.size && column >= 0 && column < board.size
 
   // Return true whether a given cell is empty.
-  def isEmpty(board: Board, row: Int, column: Int): Boolean = (row, column) match {
-    case (row, column): (Int, Int) if exists(board, row, column) =>
-      if (board.apply(row).apply(column).equals(Cells.Empty)) then true else false
-    case _ => false
-  }
-
-  // Return true if a given position is already occupied.
-  private def isOccupied(board: Board, row: Int, column: Int): Boolean = !isEmpty(board, row, column) && exists(board, row, column)
+  def isEmpty(board: Board, row: Int, column: Int): Boolean =
+    exists(board, row, column) && board(row)(column).equals(Cells.Empty)
 
   // Return the piece located at a given position.
   private def getPiece(board: Board, row: Int, column: Int): Cells.Cell = {

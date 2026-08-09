@@ -1,12 +1,8 @@
 package Project
 
-import Project.Board
-import Project.Cells.Cell
-import Project.Difficulty.{Easy, Normal}
-import Project.FirstPlayer.{Computer, User}
 import scala.io.StdIn.readLine
 import scala.Console
-import scala.annotation.{nowarn, tailrec}
+import scala.annotation.tailrec
 import scala.util.matching.Regex
 import java.io.{FileInputStream, FileOutputStream, IOException, ObjectInputStream, ObjectOutputStream}
 import scala.collection.SortedMap
@@ -25,7 +21,7 @@ object HexUtils {
       case Options.gameMenu => println("-- Game menu --")
       case Options.settings => println("-- Settings --")
     }
-    options.toList.map((option: (Int, CommandLineOption)) => println(option._1 + ") " + option._2.name)): @nowarn
+    println(options.toList.map((option: (Int, CommandLineOption)) => option._1 + ") " + option._2.name).mkString("\n"))
     getUserInput("Select an option") match {
       case Success(i) => if(options.toList.unzip._1.contains(i)) then options.get(i) else userOptionsPrompt(options)
       case Failure(_) => println("The option you have selected is not valid."); userOptionsPrompt(options)
@@ -34,12 +30,7 @@ object HexUtils {
 
   private def getUserInput(message: String): Try[Int] = {
     print(message + ": ")
-    Try(readLineOrExit().trim.toUpperCase.toInt)
-  }
-
-  private def prompt(message: String): String = {
-    print(message + ": ")
-    readLine()
+    Try(readLineOrExit().trim.toInt)
   }
 
   // Read a line from the standard input, terminating cleanly when the input stream has been closed (EOF).
@@ -59,7 +50,7 @@ object HexUtils {
       Cells.Empty -> ".")
 
     // Print the header with the current player and move information.
-    def printHeader(container: Container): Unit = Some(container.state.move).get match {
+    def printHeader(container: Container): Unit = container.state.move match {
       case Some(value) =>
         container.settings._2 match
           case FirstPlayer.User =>

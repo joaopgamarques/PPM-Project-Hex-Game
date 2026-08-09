@@ -1,12 +1,8 @@
 package Project
 
-import Project.Board
-import Project.Cells.Cell
-import Project.FirstPlayer.{Computer, User}
+import Project.FirstPlayer.User
 import Project.Difficulty.{Easy, Normal}
-import Project.UserInterface.{GUI, TUI}
-import Project.GameState
-import scala.annotation.{tailrec, targetName}
+import Project.UserInterface.GUI
 
 case class Container(state: GameState, positions: List[(Int, Int)], random: MyRandom, settings: Settings) {
 }
@@ -59,12 +55,12 @@ object Container {
       case s"$a,$b" if (GameState.isEmpty(lastContainer.state.board, a.toInt, b.toInt)) =>
         val state: GameState = GameState(lastContainer.state.play(Cells.Blue, a.toInt, b.toInt), Some((a.toInt, b.toInt)))
         if (state.hasContiguousLine(Cells.Blue)) then HexUtils.showUserWinsMessage()
-        val container: Container = Container(state, Some((a.toInt, b.toInt)).get :: lastContainer.positions, lastContainer.random, lastContainer.settings)
+        val container: Container = Container(state, (a.toInt, b.toInt) :: lastContainer.positions, lastContainer.random, lastContainer.settings)
         if (!state.isBoardFull && !state.hasWinner) {
           val randomMove: ((Int, Int), MyRandom) = getRandomMove(container)
           val nextState: GameState = GameState(state.play(Cells.Red, randomMove._1._1, randomMove._1._2), Some(randomMove._1))
           if (nextState.hasContiguousLine(Cells.Red)) then HexUtils.showComputerWinsMessage()
-          val nextContainer: Container = Container(nextState, Some(randomMove._1).get :: container.positions, randomMove._2, lastContainer.settings)
+          val nextContainer: Container = Container(nextState, randomMove._1 :: container.positions, randomMove._2, lastContainer.settings)
           HexUtils.printContainer(nextContainer); nextContainer
         } else {
           HexUtils.printContainer(container); container
@@ -78,7 +74,7 @@ object Container {
     if (!container.state.isBoardEmpty) then return container
     val randomMove: ((Int, Int), MyRandom) = getRandomMove(container)
     val state: GameState = GameState(container.state.play(Cells.Red, randomMove._1._1, randomMove._1._2), Some(randomMove._1))
-    val nextContainer: Container = Container(state, Some(randomMove._1).get :: container.positions, randomMove._2, container.settings)
+    val nextContainer: Container = Container(state, randomMove._1 :: container.positions, randomMove._2, container.settings)
     HexUtils.printContainer(nextContainer); nextContainer
   }
 
