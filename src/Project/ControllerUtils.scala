@@ -1,17 +1,5 @@
 package Project
 
-import Project.GameOptions.{MainMenu, GameMenu, Settings}
-import javafx.fxml.FXML
-import javafx.scene.control.{Button, TextField}
-import javafx.scene.paint.Color
-import javafx.scene.shape.Polygon
-import javafx.event.ActionEvent
-import javafx.event.EventHandler
-import javafx.scene.input.MouseEvent
-import javafx.fxml.FXMLLoader
-import javafx.scene.{Parent, Scene}
-import javafx.stage.Stage
-import scala.annotation.tailrec
 import scala.util.matching.Regex
 
 object ControllerUtils {

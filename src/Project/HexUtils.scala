@@ -21,7 +21,7 @@ object HexUtils {
       case Options.gameMenu => println("-- Game menu --")
       case Options.settings => println("-- Settings --")
     }
-    println(options.toList.map((option: (Int, CommandLineOption)) => option._1 + ") " + option._2.name).mkString("\n"))
+    println(options.toList.map((option: (Int, CommandLineOption)) => s"${option._1}) ${option._2.name}").mkString("\n"))
     getUserInput("Select an option") match {
       case Success(i) => if(options.toList.unzip._1.contains(i)) then options.get(i) else userOptionsPrompt(options)
       case Failure(_) => println("The option you have selected is not valid."); userOptionsPrompt(options)

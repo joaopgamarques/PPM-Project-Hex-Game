@@ -1,18 +1,9 @@
 package Project
 
-import Project.Board
-import Project.Cells.Cell
-import Project.Options
-import Project.GameOptions
-import Project.GameOptions.{MainMenu, GameMenu, Settings}
-import Project.Controller
-import Project.Container
-import Project.ControllerUtils
 import javafx.application.Application
 import javafx.fxml.FXMLLoader
-import javafx.scene.control.RadioButton
 import javafx.scene.{Parent, Scene}
-import javafx.stage.{Modality, Stage}
+import javafx.stage.Stage
 
 class HexGUI extends Application {
 
@@ -29,11 +20,6 @@ class HexGUI extends Application {
     stage.setScene(scene)
     // Show the stage.
     stage.show()
-    // Access the RadioButtons in the scene by their IDs and set them as selected or not selected.
-    scene.lookup("#normal").asInstanceOf[RadioButton].setSelected(true)
-    scene.lookup("#easy").asInstanceOf[RadioButton].setSelected(false)
-    scene.lookup("#user").asInstanceOf[RadioButton].setSelected(true)
-    scene.lookup("#computer").asInstanceOf[RadioButton].setSelected(false)
   }
   
 }

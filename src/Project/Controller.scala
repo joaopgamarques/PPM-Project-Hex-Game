@@ -4,25 +4,18 @@ import javafx.fxml.FXML
 import javafx.scene.control.{Button, Label, RadioButton, TextField}
 import javafx.scene.paint.Color
 import javafx.scene.shape.Polygon
-import javafx.event.ActionEvent
-import javafx.event.EventHandler
 import javafx.scene.input.MouseEvent
 import javafx.fxml.FXMLLoader
 import javafx.scene.{Parent, Scene}
 import javafx.stage.{Modality, Stage}
-import Project.ControllerUtils
-import Project.Container
-import Project.Container.{getFirstRandomMove, undo}
-import Project.Difficulty
-import Project.FirstPlayer
 import Project.FirstPlayer.{Computer, User}
-
-import scala.annotation.{nowarn, tailrec}
 
 class Controller {
 
   // The GUI board is a fixed 5x5 grid of Polygon cells (see GameWindow.fxml).
   private val BOARD_SIZE: Int = 5
+  // Fill of an empty cell, matching the Polygon fill in GameWindow.fxml.
+  private val EMPTY_CELL_COLOR: Color = Color.web("#fff8f8")
 
   @FXML
   private var P00, P01, P02, P03, P04: Polygon = _
@@ -108,7 +101,7 @@ class Controller {
     val scene: Scene = undoLastMoveButton.getScene
     val (removedPositions, remainingPositions): (List[(Int, Int)], List[(Int, Int)]) = FxApp.container.positions.splitAt(2)
     if (removedPositions.size.equals(2)) {
-      removedPositions.map(position => scene.lookup(s"#${ControllerUtils.getButtonId(position)}").asInstanceOf[Polygon].setFill(Color.WHITE)): @nowarn
+      removedPositions.foreach(position => scene.lookup(s"#${ControllerUtils.getButtonId(position)}").asInstanceOf[Polygon].setFill(EMPTY_CELL_COLOR))
       FxApp.container = Container.undo()(FxApp.container)
     }
   }
@@ -145,7 +138,7 @@ class Controller {
     val fxmlLoader = new FXMLLoader(getClass.getResource("MainWindow.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
     val scene = new Scene(mainViewRoot)
-    applyDefaultSettingsTo(scene); stage.setScene(scene); stage.show()
+    stage.setScene(scene); stage.show()
     yesReturnButton.getScene.getWindow.hide()
     HexUtils.saveMyRandom(FxApp.container.random)
   }
@@ -182,14 +175,6 @@ class Controller {
     (difficulty, firstPlayer, UserInterface.GUI)
   }
 
-  // Applies the default settings to the specified scene.
-  private def applyDefaultSettingsTo(scene: Scene): Unit = {
-    scene.lookup("#normal").asInstanceOf[RadioButton].setSelected(true)
-    scene.lookup("#easy").asInstanceOf[RadioButton].setSelected(false)
-    scene.lookup("#user").asInstanceOf[RadioButton].setSelected(true)
-    scene.lookup("#computer").asInstanceOf[RadioButton].setSelected(false)
-  }
-
   // Load a previous saved game.
   def onMouseClickedLoad(): Unit = {
     val scene: Scene = loadWindow("Load Game", "LoadGamePopup.fxml", loadGamePopupButton, true, false)
@@ -219,7 +204,7 @@ class Controller {
 
   // Draw the board by filling the corresponding Polygon elements with the specified color.
   private def fillPositions(positions: List[(Int, Int)], color: Color, scene: Scene): Unit = {
-    positions.map(position => scene.lookup(s"#${ControllerUtils.getButtonId(position)}").asInstanceOf[Polygon].setFill(color)): @nowarn
+    positions.foreach(position => scene.lookup(s"#${ControllerUtils.getButtonId(position)}").asInstanceOf[Polygon].setFill(color))
   }
 
   def onMouseClickedCancelLoad(): Unit = {
@@ -231,7 +216,7 @@ class Controller {
     val fxmlLoader = new FXMLLoader(getClass.getResource("MainWindow.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
     val scene = new Scene(mainViewRoot)
-    applyDefaultSettingsTo(scene); stage.setScene(scene); stage.show()
+    stage.setScene(scene); stage.show()
     acknowledgeWinnerButton.getScene.getWindow.hide()
     HexUtils.saveMyRandom(FxApp.container.random)
   }

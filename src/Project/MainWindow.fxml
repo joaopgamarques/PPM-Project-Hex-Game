@@ -42,8 +42,8 @@
                         <ToggleGroup fx:id="Difficulty" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="normal" layoutX="26.0" layoutY="65.0" mnemonicParsing="false" text="Normal" textFill="WHITE" toggleGroup="$Difficulty" />
-                  <RadioButton fx:id="user" layoutX="26.0" layoutY="120.0" mnemonicParsing="false" text="User" textFill="WHITE">
+                  <RadioButton fx:id="normal" layoutX="26.0" layoutY="65.0" mnemonicParsing="false" selected="true" text="Normal" textFill="WHITE" toggleGroup="$Difficulty" />
+                  <RadioButton fx:id="user" layoutX="26.0" layoutY="120.0" mnemonicParsing="false" selected="true" text="User" textFill="WHITE">
                      <toggleGroup>
                         <ToggleGroup fx:id="FirstPlayer" />
                      </toggleGroup>
