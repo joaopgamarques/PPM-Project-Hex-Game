@@ -30,6 +30,18 @@ class Controller {
   @FXML
   private var P40, P41, P42, P43, P44: Polygon = _
 
+  // The cells above as a matrix, so a cell can be addressed by row and column instead of by name.
+  // Lazy because the FXMLLoader injects the fields after the controller has been constructed.
+  private lazy val cells: Vector[Vector[Polygon]] = Vector(
+    Vector(P00, P01, P02, P03, P04),
+    Vector(P10, P11, P12, P13, P14),
+    Vector(P20, P21, P22, P23, P24),
+    Vector(P30, P31, P32, P33, P34),
+    Vector(P40, P41, P42, P43, P44))
+
+  // Return the board cell of this window at the given position.
+  private def cellAt(position: (Int, Int)): Polygon = cells(position._1)(position._2)
+
   @FXML
   private var startNewGameButton, resumeGameButton, loadGamePopupButton, returnToMainDisplayButton, undoLastMoveButton: Button = _
 
@@ -118,11 +130,8 @@ class Controller {
     if (FxApp.container.state.isEmpty(row, column)) {
       FxApp.container = Container.play(position)(FxApp.container)
       polygon.setFill(BLUE_PIECE_COLOR)
-      val scene: Scene = polygon.getScene
       if (FxApp.container.state.hasContiguousLine(Cells.Blue)) {launchGameWinnerPopup("User"); return}
-      val nextPosition: (Int, Int) = FxApp.container.positions.head
-      val nextPolygon: Polygon = scene.lookup(s"#${ControllerUtils.getButtonId(nextPosition)}").asInstanceOf[Polygon]
-      nextPolygon.setFill(RED_PIECE_COLOR)
+      cellAt(FxApp.container.positions.head).setFill(RED_PIECE_COLOR)
       if (FxApp.container.state.hasContiguousLine(Cells.Red)) {launchGameWinnerPopup("Computer"); return}
     }
   }
@@ -135,10 +144,9 @@ class Controller {
 
   // Revert the last move and restores the game state to the previous state.
   def onMouseClickedUndo(): Unit = {
-    val scene: Scene = undoLastMoveButton.getScene
     val (removedPositions, remainingPositions): (List[(Int, Int)], List[(Int, Int)]) = FxApp.container.positions.splitAt(2)
     if (removedPositions.size.equals(2)) {
-      removedPositions.foreach(position => scene.lookup(s"#${ControllerUtils.getButtonId(position)}").asInstanceOf[Polygon].setFill(EMPTY_CELL_COLOR))
+      removedPositions.foreach(position => cellAt(position).setFill(EMPTY_CELL_COLOR))
       FxApp.container = Container.undo()(FxApp.container)
     }
   }
