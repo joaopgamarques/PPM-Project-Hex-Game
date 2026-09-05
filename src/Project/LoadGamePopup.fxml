@@ -7,7 +7,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="364.0" styleClass="popup" stylesheets="@hex.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
    <children>
-      <Label alignment="CENTER" layoutY="24.0" prefWidth="364.0" styleClass="popup-title" text="Load a saved game" />
+      <Label alignment="CENTER" layoutY="24.0" prefWidth="364.0" styleClass="popup-title" text="Load a saved game." />
       <TextField fx:id="loadGameTextField" layoutX="82.0" layoutY="58.0" prefWidth="200.0" promptText="Game name" />
       <Button fx:id="loadGameButton" defaultButton="true" layoutX="100.0" layoutY="102.0" mnemonicParsing="false" onAction="#onMouseClickedConfirmLoad" styleClass="game-button" text="Load" />
       <Button fx:id="cancelLoadGameButton" cancelButton="true" layoutX="190.0" layoutY="102.0" mnemonicParsing="false" onAction="#onMouseClickedCancelLoad" styleClass="game-button" text="Cancel" />

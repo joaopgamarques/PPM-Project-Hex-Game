@@ -8,7 +8,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="364.0" styleClass="popup" stylesheets="@hex.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
    <children>
       <Label fx:id="winnerLabel" alignment="CENTER" layoutY="42.0" prefWidth="364.0" styleClass="popup-winner" text="" />
-      <Label alignment="CENTER" layoutY="70.0" prefWidth="364.0" styleClass="app-subtitle" text="Back to the main menu" />
+      <Label alignment="CENTER" layoutY="70.0" prefWidth="364.0" styleClass="app-subtitle" text="Back to the main menu." />
       <Button fx:id="acknowledgeWinnerButton" defaultButton="true" layoutX="145.0" layoutY="102.0" mnemonicParsing="false" onAction="#onMouseClickedAcknowledgeWinner" styleClass="game-button" text="OK" />
    </children>
 </Pane>

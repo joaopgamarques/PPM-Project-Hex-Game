@@ -12,8 +12,8 @@
       <Pane id="gamePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="426.0" prefWidth="600.0" styleClass="app-background">
           <children>
               <Label fx:id="gameDisplayTitle" layoutX="50.0" layoutY="20.0" styleClass="app-title" text="HEX BOARD GAME" />
-              <Label layoutX="50.0" layoutY="366.0" styleClass="legend-blue" text="You are Blue - connect top and bottom" />
-              <Label layoutX="50.0" layoutY="386.0" styleClass="legend-red" text="Computer is Red - connects left and right" />
+              <Label layoutX="50.0" layoutY="366.0" styleClass="legend-blue" text="You are Blue - connect top and bottom." />
+              <Label layoutX="50.0" layoutY="386.0" styleClass="legend-red" text="Computer is Red - connects left and right." />
               <Polygon fx:id="P00" fill="#F4F1EA" styleClass="cell" layoutX="115.0" layoutY="112.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0, -34.6667, 0.0, -17.3333, 30.0, 17.3333, 30.0" rotate="30.0" stroke="#2A2E37" strokeType="INSIDE">
                <cursor>
                   <Cursor fx:constant="HAND" />

@@ -10,7 +10,7 @@
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="500.0" styleClass="app-background">
          <children>
             <Label alignment="CENTER" layoutY="8.0" prefWidth="500.0" styleClass="app-title" text="HEX BOARD GAME" />
-            <Label alignment="CENTER" layoutY="46.0" prefWidth="500.0" styleClass="app-subtitle" text="Connect your two edges before the computer connects its own" />
+            <Label alignment="CENTER" layoutY="46.0" prefWidth="500.0" styleClass="app-subtitle" text="Connect your two edges before the computer connects its own." />
             <Button fx:id="startNewGameButton" layoutX="30.0" layoutY="100.0" mnemonicParsing="false" onAction="#onMouseClickedStart" styleClass="menu-button" text="New Game" />
             <Button fx:id="resumeGameButton" layoutX="30.0" layoutY="162.0" mnemonicParsing="false" onAction="#onMouseClickedResume" styleClass="menu-button-secondary" text="Resume" />
             <Button fx:id="loadGamePopupButton" layoutX="30.0" layoutY="224.0" mnemonicParsing="false" onAction="#onMouseClickedLoad" styleClass="menu-button-secondary" text="Load Game" />
