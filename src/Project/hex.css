@@ -1,0 +1,225 @@
+/* Shared look for the Hex board game.
+   Every colour is defined once here and looked up by the rules below. */
+
+.root {
+    -hex-background: #1A1D23;
+    -hex-surface: #252932;
+    -hex-border: #343A45;
+    -hex-field: #12151A;
+    -hex-accent: #9ED016;
+    -hex-accent-bright: #B2E52C;
+    -hex-accent-dark: #7FA912;
+    -hex-accent-wash: #1D2616;
+    -hex-text: #F5F7FA;
+    -hex-text-muted: #8A93A1;
+    -hex-text-control: #C3CAD4;
+    -hex-disabled-border: #333A45;
+    -hex-disabled-text: #5A6472;
+    -hex-blue: #6E9BF0;
+    -hex-red: #E9736C;
+
+    -fx-background-color: -hex-background;
+    -fx-font-family: "Segoe UI", "System";
+}
+
+.app-background {
+    -fx-background-color: -hex-background;
+}
+
+/* Typography */
+
+.app-title {
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -hex-text;
+}
+
+.app-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: -hex-text-muted;
+}
+
+.section-label {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -hex-accent;
+}
+
+.legend-blue {
+    -fx-font-size: 12px;
+    -fx-text-fill: -hex-blue;
+}
+
+.legend-red {
+    -fx-font-size: 12px;
+    -fx-text-fill: -hex-red;
+}
+
+/* Settings card on the main menu */
+
+.card {
+    -fx-background-color: -hex-surface;
+    -fx-background-radius: 12;
+    -fx-border-color: -hex-border;
+    -fx-border-radius: 12;
+    -fx-border-width: 1;
+}
+
+/* Main menu buttons: one primary action, two secondary ones */
+
+.menu-button {
+    -fx-background-color: -hex-accent;
+    -fx-background-radius: 24;
+    -fx-text-fill: #12141A;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-pref-width: 170;
+    -fx-pref-height: 48;
+    -fx-cursor: hand;
+}
+
+.menu-button:hover {
+    -fx-background-color: -hex-accent-bright;
+}
+
+.menu-button:pressed {
+    -fx-background-color: -hex-accent-dark;
+}
+
+.menu-button-secondary {
+    -fx-background-color: transparent;
+    -fx-background-radius: 24;
+    -fx-border-color: -hex-accent;
+    -fx-border-radius: 24;
+    -fx-border-width: 2;
+    -fx-text-fill: -hex-accent;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-pref-width: 170;
+    -fx-pref-height: 48;
+    -fx-cursor: hand;
+}
+
+.menu-button-secondary:hover {
+    -fx-background-color: -hex-accent-wash;
+}
+
+.menu-button-secondary:pressed {
+    -fx-background-color: -hex-accent-wash;
+}
+
+/* Keep disabled buttons legible instead of the default 40% fade.
+   Derived from the background so they stay visible whatever it is set to. */
+.menu-button:disabled, .menu-button-secondary:disabled {
+    -fx-opacity: 1.0;
+    -fx-background-color: transparent;
+    -fx-border-color: derive(-hex-background, 35%);
+    -fx-text-fill: derive(-hex-background, 65%);
+    -fx-cursor: default;
+}
+
+/* Game window buttons */
+
+.game-button {
+    -fx-background-color: -hex-surface;
+    -fx-background-radius: 8;
+    -fx-border-color: -hex-border;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-text-fill: #DDE3EB;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-pref-width: 82;
+    -fx-pref-height: 32;
+    -fx-cursor: hand;
+}
+
+.game-button:hover {
+    -fx-background-color: derive(-hex-surface, 15%);
+    -fx-border-color: -hex-accent;
+    -fx-text-fill: #FFFFFF;
+}
+
+.game-button:pressed {
+    -fx-background-color: derive(-hex-surface, 25%);
+}
+
+/* Board cells: hover highlights the outline, never the fill, which the
+   controller sets programmatically when a piece is placed. */
+
+.cell {
+    -fx-cursor: hand;
+}
+
+.cell:hover {
+    -fx-stroke: -hex-accent;
+    -fx-stroke-width: 2.5;
+}
+
+/* Radio buttons */
+
+.radio-button {
+    -fx-text-fill: -hex-text-control;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+}
+
+.radio-button:selected {
+    -fx-text-fill: #FFFFFF;
+}
+
+.radio-button .radio {
+    -fx-background-color: -hex-field;
+    -fx-border-color: #4A5361;
+    -fx-border-radius: 1em;
+    -fx-padding: 3;
+}
+
+.radio-button:hover .radio {
+    -fx-border-color: -hex-accent;
+}
+
+.radio-button:selected .radio {
+    -fx-border-color: -hex-accent;
+}
+
+.radio-button:selected .radio .dot {
+    -fx-background-color: -hex-accent;
+    -fx-background-insets: 0;
+}
+
+/* Popups */
+
+.popup {
+    -fx-background-color: -hex-surface;
+    -fx-border-color: -hex-border;
+    -fx-border-width: 1;
+}
+
+.popup-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -hex-text;
+}
+
+.popup-winner {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -hex-accent;
+}
+
+.text-field {
+    -fx-background-color: -hex-field;
+    -fx-background-radius: 6;
+    -fx-border-color: #39404C;
+    -fx-border-radius: 6;
+    -fx-border-width: 1;
+    -fx-text-fill: -hex-text;
+    -fx-prompt-text-fill: #6B7280;
+    -fx-font-size: 13px;
+    -fx-padding: 6 10 6 10;
+}
+
+.text-field:focused {
+    -fx-border-color: -hex-accent;
+}

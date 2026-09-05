@@ -14,8 +14,10 @@ class Controller {
 
   // The GUI board is a fixed 5x5 grid of Polygon cells (see GameWindow.fxml).
   private val BOARD_SIZE: Int = 5
-  // Fill of an empty cell, matching the Polygon fill in GameWindow.fxml.
-  private val EMPTY_CELL_COLOR: Color = Color.web("#fff8f8")
+  // Board colours, matching the Polygon fills in GameWindow.fxml and the palette in hex.css.
+  private val EMPTY_CELL_COLOR: Color = Color.web("#F4F1EA")
+  private val BLUE_PIECE_COLOR: Color = Color.web("#2F6FEB")
+  private val RED_PIECE_COLOR: Color = Color.web("#E0433A")
 
   @FXML
   private var P00, P01, P02, P03, P04: Polygon = _
@@ -100,8 +102,8 @@ class Controller {
 
   // Draw the pieces of the current container on the given game window scene.
   private def drawBoard(scene: Scene): Unit = {
-    fillPositions(FxApp.container.state.getOccupiedBy(Cells.Red), Color.RED, scene)
-    fillPositions(FxApp.container.state.getOccupiedBy(Cells.Blue), Color.BLUE, scene)
+    fillPositions(FxApp.container.state.getOccupiedBy(Cells.Red), RED_PIECE_COLOR, scene)
+    fillPositions(FxApp.container.state.getOccupiedBy(Cells.Blue), BLUE_PIECE_COLOR, scene)
   }
 
   /* Game Menu */
@@ -115,12 +117,12 @@ class Controller {
     val (row, column): (Int, Int) = ControllerUtils.getBoardPosition(position)
     if (FxApp.container.state.isEmpty(row, column)) {
       FxApp.container = Container.play(position)(FxApp.container)
-      polygon.setFill(Color.BLUE)
+      polygon.setFill(BLUE_PIECE_COLOR)
       val scene: Scene = polygon.getScene
       if (FxApp.container.state.hasContiguousLine(Cells.Blue)) {launchGameWinnerPopup("User"); return}
       val nextPosition: (Int, Int) = FxApp.container.positions.head
       val nextPolygon: Polygon = scene.lookup(s"#${ControllerUtils.getButtonId(nextPosition)}").asInstanceOf[Polygon]
-      nextPolygon.setFill(Color.RED)
+      nextPolygon.setFill(RED_PIECE_COLOR)
       if (FxApp.container.state.hasContiguousLine(Cells.Red)) {launchGameWinnerPopup("Computer"); return}
     }
   }
@@ -154,7 +156,7 @@ class Controller {
       saveGameButton.getScene.getWindow.hide()
     } else {
       // Keep the popup open and use the text field's prompt to ask for a name.
-      saveGameTextField.setPromptText("Please enter a name for the game")
+      saveGameTextField.setPromptText("Please enter a name for the game.")
     }
   }
 
@@ -193,7 +195,7 @@ class Controller {
         val state: GameState = GameState(FxApp.container.state.play(Cells.Red, position._1, position._2), Option(position))
         FxApp.container = Container(state, position :: FxApp.container.positions, random, FxApp.container.settings)
         val polygon: Polygon = scene.lookup(s"#${ControllerUtils.getButtonId(position)}").asInstanceOf[Polygon]
-        polygon.setFill(Color.RED)
+        polygon.setFill(RED_PIECE_COLOR)
     }
   }
 
@@ -228,8 +230,8 @@ class Controller {
         FxApp.container = Container(value.state, value.positions, value.random, (value.settings._1, value.settings._2, UserInterface.GUI))
         drawBoard(scene)
       // On failure keep the popup open and use the text field's prompt to tell the user what went wrong.
-      case Some(_) => loadGameTextField.clear(); loadGameTextField.setPromptText("Only 5x5 games can be loaded here")
-      case None => loadGameTextField.clear(); loadGameTextField.setPromptText("Game not found")
+      case Some(_) => loadGameTextField.clear(); loadGameTextField.setPromptText("Only 5x5 games can be loaded here.")
+      case None => loadGameTextField.clear(); loadGameTextField.setPromptText("Game not found.")
     }
   }
 

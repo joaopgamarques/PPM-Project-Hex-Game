@@ -5,30 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="145.0" prefWidth="364.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="364.0" styleClass="popup" stylesheets="@hex.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
    <children>
-      <Label layoutX="107.0" layoutY="28.0" text="Insert game name here">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font></Label>
-      <TextField fx:id="saveGameTextField" layoutX="108.0" layoutY="60.0" />
-      <Pane layoutX="78.0" layoutY="91.0" prefHeight="41.0" prefWidth="209.0">
-         <children>
-            <Button fx:id="saveGameButton" layoutX="40.0" layoutY="8.0" mnemonicParsing="false" onAction="#onMouseClickedConfirmSave" defaultButton="true" style="-fx-pref-width: 60; -fx-background-color: #9ed016; -fx-background-radius: 10;" text="Save">
-               <font>
-                  <Font name="System Bold Italic" size="12.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="cancelSaveGameButton" layoutX="110.0" layoutY="8.0" mnemonicParsing="false" onAction="#onMouseClickedCancelSave" cancelButton="true" prefHeight="25.0" prefWidth="144.0" style="-fx-pref-width: 60; -fx-background-color: #9ed016; -fx-background-radius: 10;" text="Cancel">
-            <font>
-               <Font name="System Bold Italic" size="12.0" />
-            </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor></Button>
-         </children>
-      </Pane>
+      <Label alignment="CENTER" layoutY="24.0" prefWidth="364.0" styleClass="popup-title" text="Save the current game" />
+      <TextField fx:id="saveGameTextField" layoutX="82.0" layoutY="58.0" prefWidth="200.0" promptText="Game name" />
+      <Button fx:id="saveGameButton" cancelButton="false" defaultButton="true" layoutX="100.0" layoutY="102.0" mnemonicParsing="false" onAction="#onMouseClickedConfirmSave" styleClass="game-button" text="Save" />
+      <Button fx:id="cancelSaveGameButton" cancelButton="true" layoutX="190.0" layoutY="102.0" mnemonicParsing="false" onAction="#onMouseClickedCancelSave" styleClass="game-button" text="Cancel" />
    </children>
 </Pane>

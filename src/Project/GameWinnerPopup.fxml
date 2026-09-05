@@ -5,22 +5,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="145.0" prefWidth="364.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="364.0" styleClass="popup" stylesheets="@hex.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
    <children>
-      <Label fx:id="winnerLabel" alignment="CENTER" layoutX="67.0" layoutY="36.0" prefHeight="19.0" prefWidth="231.0" text="">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font></Label>
-      <Pane layoutX="78.0" layoutY="62.0" prefHeight="41.0" prefWidth="209.0">
-         <children>
-            <Button fx:id="acknowledgeWinnerButton" layoutX="75.0" layoutY="8.0" mnemonicParsing="false" onAction="#onMouseClickedAcknowledgeWinner" defaultButton="true" prefHeight="25.0" prefWidth="144.0" style="-fx-pref-width: 60; -fx-background-color: #9ed016; -fx-background-radius: 10;" text="OK">
-            <font>
-               <Font name="System Bold Italic" size="12.0" />
-            </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor></Button>
-         </children>
-      </Pane>
+      <Label fx:id="winnerLabel" alignment="CENTER" layoutY="42.0" prefWidth="364.0" styleClass="popup-winner" text="" />
+      <Label alignment="CENTER" layoutY="70.0" prefWidth="364.0" styleClass="app-subtitle" text="Back to the main menu" />
+      <Button fx:id="acknowledgeWinnerButton" defaultButton="true" layoutX="145.0" layoutY="102.0" mnemonicParsing="false" onAction="#onMouseClickedAcknowledgeWinner" styleClass="game-button" text="OK" />
    </children>
 </Pane>

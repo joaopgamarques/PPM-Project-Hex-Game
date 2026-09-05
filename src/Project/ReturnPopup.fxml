@@ -5,29 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="145.0" prefWidth="364.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="364.0" styleClass="popup" stylesheets="@hex.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller">
    <children>
-      <Label alignment="CENTER" layoutX="0.0" layoutY="34.0" prefWidth="364.0" text="Return to the main menu?">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font></Label>
-      <Pane layoutX="78.0" layoutY="62.0" prefHeight="41.0" prefWidth="209.0">
-         <children>
-            <Button fx:id="yesReturnButton" layoutX="40.0" layoutY="8.0" mnemonicParsing="false" onAction="#onMouseClickedConfirmReturn" defaultButton="true" style="-fx-pref-width: 60; -fx-background-color: #9ed016; -fx-background-radius: 10;" text="Yes">
-               <font>
-                  <Font name="System Bold Italic" size="12.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="noReturnButton" layoutX="110.0" layoutY="8.0" mnemonicParsing="false" onAction="#onMouseClickedCancelReturn" cancelButton="true" prefHeight="25.0" prefWidth="144.0" style="-fx-pref-width: 60; -fx-background-color: #9ed016; -fx-background-radius: 10;" text="No">
-            <font>
-               <Font name="System Bold Italic" size="12.0" />
-            </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor></Button>
-         </children>
-      </Pane>
+      <Label alignment="CENTER" layoutY="38.0" prefWidth="364.0" styleClass="popup-title" text="Return to the main menu?" />
+      <Label alignment="CENTER" layoutY="60.0" prefWidth="364.0" styleClass="app-subtitle" text="The game stays available under Resume" />
+      <Button fx:id="yesReturnButton" defaultButton="true" layoutX="100.0" layoutY="98.0" mnemonicParsing="false" onAction="#onMouseClickedConfirmReturn" styleClass="game-button" text="Yes" />
+      <Button fx:id="noReturnButton" cancelButton="true" layoutX="190.0" layoutY="98.0" mnemonicParsing="false" onAction="#onMouseClickedCancelReturn" styleClass="game-button" text="No" />
    </children>
 </Pane>
