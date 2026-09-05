@@ -29,7 +29,7 @@ class Controller {
   private var P40, P41, P42, P43, P44: Polygon = _
 
   @FXML
-  private var startNewGameButton, loadGamePopupButton, returnToMainDisplayButton, undoLastMoveButton: Button = _
+  private var startNewGameButton, resumeGameButton, loadGamePopupButton, returnToMainDisplayButton, undoLastMoveButton: Button = _
 
   @FXML
   private var saveGamePopupButton: Button = _
@@ -67,6 +67,41 @@ class Controller {
     val mainViewRoot: Parent = fxmlLoader.load()
     val scene: Scene = new Scene(mainViewRoot)
     stage.setScene(scene); stage.setResizable(resizable); stage.show(); scene
+  }
+
+  // Called by the FXMLLoader once the fields of the loaded window have been injected.
+  @FXML
+  def initialize(): Unit = {
+    // Main menu only: reflect the game in progress and the settings of the current container.
+    if (resumeGameButton != null) {
+      resumeGameButton.setDisable(FxApp.container.positions.isEmpty)
+      val (difficulty, firstPlayer, _): Settings = FxApp.container.settings
+      normal.setSelected(difficulty.equals(Difficulty.Normal))
+      easy.setSelected(difficulty.equals(Difficulty.Easy))
+      user.setSelected(firstPlayer.equals(FirstPlayer.User))
+      computer.setSelected(firstPlayer.equals(FirstPlayer.Computer))
+    }
+  }
+
+  // Replace the content of the given stage with the main menu.
+  private def showMainMenu(stage: Stage): Unit = {
+    val fxmlLoader = new FXMLLoader(getClass.getResource("MainWindow.fxml"))
+    val mainViewRoot: Parent = fxmlLoader.load()
+    stage.setScene(new Scene(mainViewRoot)); stage.show()
+  }
+
+  // Replace the content of the given stage with the game window and return its scene.
+  private def showGameWindow(stage: Stage): Scene = {
+    val fxmlLoader = new FXMLLoader(getClass.getResource("GameWindow.fxml"))
+    val mainViewRoot: Parent = fxmlLoader.load()
+    val scene: Scene = new Scene(mainViewRoot)
+    stage.setScene(scene); stage.show(); scene
+  }
+
+  // Draw the pieces of the current container on the given game window scene.
+  private def drawBoard(scene: Scene): Unit = {
+    fillPositions(FxApp.container.state.getOccupiedBy(Cells.Red), Color.RED, scene)
+    fillPositions(FxApp.container.state.getOccupiedBy(Cells.Blue), Color.BLUE, scene)
   }
 
   /* Game Menu */
@@ -135,10 +170,7 @@ class Controller {
   // Return to the Main Menu.
   def onMouseClickedConfirmReturn(): Unit = {
     val stage: Stage = yesReturnButton.getScene.getWindow.asInstanceOf[Stage].getOwner.asInstanceOf[Stage]
-    val fxmlLoader = new FXMLLoader(getClass.getResource("MainWindow.fxml"))
-    val mainViewRoot: Parent = fxmlLoader.load()
-    val scene = new Scene(mainViewRoot)
-    stage.setScene(scene); stage.show()
+    showMainMenu(stage)
     yesReturnButton.getScene.getWindow.hide()
     HexUtils.saveMyRandom(FxApp.container.random)
   }
@@ -151,12 +183,9 @@ class Controller {
 
   // Start a new game.
   def onMouseClickedStart(): Unit = {
-    FxApp.container = Container.create(settings = getUserSettings);
+    FxApp.container = Container.create(settings = getUserSettings)
     val stage: Stage = startNewGameButton.getScene.getWindow.asInstanceOf[Stage]
-    val fxmlLoader = new FXMLLoader(getClass.getResource("GameWindow.fxml"))
-    val mainViewRoot: Parent = fxmlLoader.load()
-    val scene: Scene = new Scene(mainViewRoot)
-    stage.setScene(scene); stage.show()
+    val scene: Scene = showGameWindow(stage)
     FxApp.container.settings._2 match {
       case User => FxApp.container = Container(FxApp.container.state, FxApp.container.positions, HexUtils.loadMyRandom().get, FxApp.container.settings)
       case Computer =>
@@ -166,6 +195,12 @@ class Controller {
         val polygon: Polygon = scene.lookup(s"#${ControllerUtils.getButtonId(position)}").asInstanceOf[Polygon]
         polygon.setFill(Color.RED)
     }
+  }
+
+  // Resume the game in progress.
+  def onMouseClickedResume(): Unit = {
+    val stage: Stage = resumeGameButton.getScene.getWindow.asInstanceOf[Stage]
+    drawBoard(showGameWindow(stage))
   }
 
   // Retrieve user settings.
@@ -188,14 +223,10 @@ class Controller {
       // Only a save whose board matches the fixed 5x5 GUI grid can be drawn; force the GUI user interface on its settings.
       case Some(value) if value.state.board.size.equals(BOARD_SIZE) =>
         val stage: Stage = loadGameButton.getScene.getWindow.asInstanceOf[Stage].getOwner.asInstanceOf[Stage]
-        val fxmlLoader = new FXMLLoader(getClass.getResource("GameWindow.fxml"))
-        val mainViewRoot: Parent = fxmlLoader.load()
-        val scene: Scene = new Scene(mainViewRoot)
-        stage.setScene(scene); stage.show()
+        val scene: Scene = showGameWindow(stage)
         loadGameButton.getScene.getWindow.hide()
         FxApp.container = Container(value.state, value.positions, value.random, (value.settings._1, value.settings._2, UserInterface.GUI))
-        fillPositions(FxApp.container.state.getOccupiedBy(Cells.Red), Color.RED, scene)
-        fillPositions(FxApp.container.state.getOccupiedBy(Cells.Blue), Color.BLUE, scene)
+        drawBoard(scene)
       // On failure keep the popup open and use the text field's prompt to tell the user what went wrong.
       case Some(_) => loadGameTextField.clear(); loadGameTextField.setPromptText("Only 5x5 games can be loaded here")
       case None => loadGameTextField.clear(); loadGameTextField.setPromptText("Game not found")
@@ -213,10 +244,7 @@ class Controller {
 
   def onMouseClickedAcknowledgeWinner(): Unit = {
     val stage: Stage = acknowledgeWinnerButton.getScene.getWindow.asInstanceOf[Stage].getOwner.asInstanceOf[Stage]
-    val fxmlLoader = new FXMLLoader(getClass.getResource("MainWindow.fxml"))
-    val mainViewRoot: Parent = fxmlLoader.load()
-    val scene = new Scene(mainViewRoot)
-    stage.setScene(scene); stage.show()
+    showMainMenu(stage)
     acknowledgeWinnerButton.getScene.getWindow.hide()
     HexUtils.saveMyRandom(FxApp.container.random)
   }
