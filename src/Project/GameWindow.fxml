@@ -161,7 +161,7 @@
               <Polygon fill="#ff0400" layoutX="459.0" layoutY="240.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="210.0" stroke="BLACK" strokeType="INSIDE" />
               <Polygon fill="#ff0400" layoutX="490.0" layoutY="293.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="210.0" stroke="BLACK" strokeType="INSIDE" />
               <Polygon fill="#ff0400" layoutX="522.0" layoutY="348.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="210.0" stroke="BLACK" strokeType="INSIDE" />
-              <Button fx:id="saveGamePopupButton" layoutX="424.0" layoutY="375.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedSave" style="-fx-background-radius: 10; -fx-background-color: #9ed016; -fx-pref-width: 60;" text="Save">
+              <Button fx:id="saveGamePopupButton" layoutX="424.0" layoutY="375.0" mnemonicParsing="false" onAction="#onMouseClickedSave" style="-fx-background-radius: 10; -fx-background-color: #9ed016; -fx-pref-width: 60;" text="Save">
                   <font>
                       <Font name="System Bold Italic" size="12.0" />
                   </font>
@@ -169,7 +169,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
               </Button>
-              <Button fx:id="returnToMainDisplayButton" layoutX="490.0" layoutY="375.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedReturn" style="-fx-background-radius: 10; -fx-background-color: #9ed016; -fx-pref-width: 60;" text="Return">
+              <Button fx:id="returnToMainDisplayButton" layoutX="490.0" layoutY="375.0" mnemonicParsing="false" onAction="#onMouseClickedReturn" style="-fx-background-radius: 10; -fx-background-color: #9ed016; -fx-pref-width: 60;" text="Return">
                   <font>
                       <Font name="System Bold Italic" size="12.0" />
                   </font>
@@ -177,7 +177,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
               </Button>
-              <Button fx:id="undoLastMoveButton" layoutX="358.0" layoutY="375.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedUndo" style="-fx-background-radius: 10; -fx-background-color: #9ed016; -fx-pref-width: 60;" text="Undo">
+              <Button fx:id="undoLastMoveButton" layoutX="358.0" layoutY="375.0" mnemonicParsing="false" onAction="#onMouseClickedUndo" style="-fx-background-radius: 10; -fx-background-color: #9ed016; -fx-pref-width: 60;" text="Undo">
                   <font>
                       <Font name="System Bold Italic" size="12.0" />
                   </font>
