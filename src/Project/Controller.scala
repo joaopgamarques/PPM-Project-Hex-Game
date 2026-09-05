@@ -21,6 +21,9 @@ import scala.annotation.{nowarn, tailrec}
 
 class Controller {
 
+  // The GUI board is a fixed 5x5 grid of Polygon cells (see GameWindow.fxml).
+  private val BOARD_SIZE: Int = 5
+
   @FXML
   private var P00, P01, P02, P03, P04: Polygon = _
   @FXML
@@ -77,6 +80,8 @@ class Controller {
 
   // Handle mouse click event.
   def onMouseClicked(mouseEvent: MouseEvent): Unit = {
+    // Ignore clicks once the game has been decided (the board stays visible behind the winner popup).
+    if (FxApp.container.state.hasWinner) then return
     val polygon: Polygon = mouseEvent.getTarget.asInstanceOf[Polygon]
     val position: String = ControllerUtils.getPosition(polygon.getId)
     val (row, column): (Int, Int) = ControllerUtils.getBoardPosition(position)
@@ -186,15 +191,24 @@ class Controller {
 
   // Load a previous saved game.
   def onMouseClickedConfirmLoad(): Unit = {
-    val stage: Stage = loadGameButton.getScene.getWindow.asInstanceOf[Stage].getOwner.asInstanceOf[Stage]
-    val fxmlLoader = new FXMLLoader(getClass.getResource("GameWindow.fxml"))
-    val mainViewRoot: Parent = fxmlLoader.load()
-    val scene: Scene = new Scene(mainViewRoot)
-    stage.setScene(scene); stage.show()
-    loadGameButton.getScene.getWindow.hide()
-    FxApp.container = HexUtils.load(loadGameTextField.getText).get
-    fillPositions(FxApp.container.state.getOccupiedBy(Cells.Red), Color.RED, scene)
-    fillPositions(FxApp.container.state.getOccupiedBy(Cells.Blue), Color.BLUE, scene)
+    val filename: String = loadGameTextField.getText.trim
+    val loaded: Option[Container] = if (filename.nonEmpty) then HexUtils.load(filename) else None
+    loaded match {
+      // Only a save whose board matches the fixed 5x5 GUI grid can be drawn; force the GUI user interface on its settings.
+      case Some(value) if value.state.board.size.equals(BOARD_SIZE) =>
+        val stage: Stage = loadGameButton.getScene.getWindow.asInstanceOf[Stage].getOwner.asInstanceOf[Stage]
+        val fxmlLoader = new FXMLLoader(getClass.getResource("GameWindow.fxml"))
+        val mainViewRoot: Parent = fxmlLoader.load()
+        val scene: Scene = new Scene(mainViewRoot)
+        stage.setScene(scene); stage.show()
+        loadGameButton.getScene.getWindow.hide()
+        FxApp.container = Container(value.state, value.positions, value.random, (value.settings._1, value.settings._2, UserInterface.GUI))
+        fillPositions(FxApp.container.state.getOccupiedBy(Cells.Red), Color.RED, scene)
+        fillPositions(FxApp.container.state.getOccupiedBy(Cells.Blue), Color.BLUE, scene)
+      // On failure keep the popup open and use the text field's prompt to tell the user what went wrong.
+      case Some(_) => loadGameTextField.clear(); loadGameTextField.setPromptText("Only 5x5 games can be loaded here")
+      case None => loadGameTextField.clear(); loadGameTextField.setPromptText("Game not found")
+    }
   }
 
   // Draw the board by filling the corresponding Polygon elements with the specified color.

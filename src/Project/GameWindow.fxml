@@ -143,7 +143,7 @@
             </Polygon>
               <Polygon fill="#0037ff" layoutX="75.0" layoutY="91.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="150.0" stroke="BLACK" strokeType="INSIDE" />
               <Polygon fill="#0037ff" layoutX="137.0" layoutY="91.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="150.0" stroke="BLACK" strokeType="INSIDE" />
-              <Polygon fill="#0037ff" layoutX="198.0" layoutY="91.0" onMouseClicked="#onMouseClicked" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="150.0" stroke="BLACK" strokeType="INSIDE" />
+              <Polygon fill="#0037ff" layoutX="198.0" layoutY="91.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="150.0" stroke="BLACK" strokeType="INSIDE" />
               <Polygon fill="#0037ff" layoutX="259.0" layoutY="91.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="150.0" stroke="BLACK" strokeType="INSIDE" />
               <Polygon fill="#0037ff" layoutX="320.0" layoutY="91.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="150.0" stroke="BLACK" strokeType="INSIDE" />
               <Polygon fill="#0037ff" layoutX="261.0" layoutY="375.0" points="34.6667, 0.0, 17.3333, -30.0, -17.3333, -30.0" rotate="330.0" stroke="BLACK" strokeType="INSIDE" />
