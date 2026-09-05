@@ -18,6 +18,8 @@ class HexGUI extends Application {
 
   override def start(stage: Stage): Unit = {
     stage.setTitle("Hex Board Game")
+    // Persist the random generator state when the window is closed, as Return and the winner popup already do.
+    stage.setOnCloseRequest(_ => HexUtils.saveMyRandom(FxApp.container.random))
     // Load the FXML file.
     val fxmlLoader = new FXMLLoader(getClass.getResource("MainWindow.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()

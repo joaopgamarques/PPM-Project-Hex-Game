@@ -99,7 +99,7 @@ class Controller {
 
   // Launch a popup if there is a winner.
   private def launchGameWinnerPopup(winner: String): Unit = {
-    val scene: Scene = loadWindow("Winner", "GameWinnerPopup.fxml", saveGamePopupButton, false, false)
+    val scene: Scene = loadWindow("Winner", "GameWinnerPopup.fxml", saveGamePopupButton, true, false)
     scene.lookup("#winnerLabel").asInstanceOf[Label].setText(s"The $winner wins the game!")
   }
 
@@ -115,13 +115,19 @@ class Controller {
 
   // Save the current game.
   def onMouseClickedSave(): Unit = {
-    val scene: Scene = loadWindow("Save Game", "SaveGamePopup.fxml", saveGamePopupButton, false, false)
+    val scene: Scene = loadWindow("Save Game", "SaveGamePopup.fxml", saveGamePopupButton, true, false)
   }
 
   // Save the current game.
   def onMouseClickedConfirmSave(): Unit = {
-    HexUtils.save(FxApp.container, saveGameTextField.getText)
-    saveGameButton.getScene.getWindow.hide()
+    val filename: String = saveGameTextField.getText.trim
+    if (filename.nonEmpty) {
+      HexUtils.save(FxApp.container, filename)
+      saveGameButton.getScene.getWindow.hide()
+    } else {
+      // Keep the popup open and use the text field's prompt to ask for a name.
+      saveGameTextField.setPromptText("Please enter a name for the game")
+    }
   }
 
   def onMouseClickedCancelSave(): Unit = {
@@ -130,7 +136,7 @@ class Controller {
 
   // Return to the Main Menu.
   def onMouseClickedReturn(): Unit = {
-    val scene: Scene = loadWindow("Return: Main Menu", "ReturnPopup.fxml", returnToMainDisplayButton, false, false)
+    val scene: Scene = loadWindow("Return: Main Menu", "ReturnPopup.fxml", returnToMainDisplayButton, true, false)
   }
 
   // Return to the Main Menu.
@@ -186,7 +192,7 @@ class Controller {
 
   // Load a previous saved game.
   def onMouseClickedLoad(): Unit = {
-    val scene: Scene = loadWindow("Load Game", "LoadGamePopup.fxml", loadGamePopupButton, false, false)
+    val scene: Scene = loadWindow("Load Game", "LoadGamePopup.fxml", loadGamePopupButton, true, false)
   }
 
   // Load a previous saved game.
