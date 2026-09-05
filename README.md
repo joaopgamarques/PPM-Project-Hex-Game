@@ -79,6 +79,6 @@ Run the `FxApp` object (in `HexGUI.scala`) with VM options pointing at your Java
 
 ## Authors
 
-- Joao Marques
+- João Marques
 - Ricardo Carvalho
 - Ruben Gaspar
